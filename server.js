@@ -61,7 +61,7 @@ app.get('/app', (req,res,next) => {
 })
 
 // only offer these endpoints if we are debugging
-if(args.debug==true){
+if(args.debug || args.d){
   app.get("/app/log/access/", (req, res,next) => {
       // try {
       const stmt = db.prepare('SELECT * FROM accesslog').all()
