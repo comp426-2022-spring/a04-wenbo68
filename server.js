@@ -69,7 +69,7 @@ if(args.debug==true){
       // } catch {
       //     console.error(e)
       // }
-  });
+  })
   app.get('/app/error', (req, res,next) => {
     throw new Error('Error test successful') // Express will catch this on its own.
   })
