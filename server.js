@@ -33,7 +33,7 @@ app.use((req, res, next) => {
       logdata.status,
       logdata.referer,
       logdata.useragent)
-    res.status(200).json(info)
+    // res.status(200).json(info)
     next();
 });
 
@@ -61,7 +61,7 @@ app.get('/app', (req,res,next) => {
 })
 
 // only offer these endpoints if we are debugging
-if(args.debug || args.d){
+if(args.debug==true){
   app.get("/app/log/access/", (req, res,next) => {
       // try {
       const stmt = db.prepare('SELECT * FROM accesslog').all()
