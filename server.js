@@ -15,12 +15,12 @@ app.use((req, res, next) => {
       url: req.url,
       protocol: req.protocol,
       httpversion: req.httpVersion,
-      secure: req.secure,
+      // secure: req.secure,
       status: res.statusCode,
       referer: req.headers['referer'],
       useragent: req.headers['user-agent']
     }
-    const stmt = db.prepare('INSERT INTO accesslog (remoteaddr, remoteuser, time, method, url, protocol, httpversion, secure, status, referer, useragent) VALUES (?,?,?,?,?,?,?,?,?,?,?)')
+    const stmt = db.prepare('INSERT INTO accesslog (remoteaddr, remoteuser, time, method, url, protocol, httpversion, status, referer, useragent) VALUES (?,?,?,?,?,?,?,?,?,?)')
     const info = stmt.run(
       logdata.remoteaddr,
       logdata.remoteuser,
@@ -29,7 +29,7 @@ app.use((req, res, next) => {
       logdata.url,
       logdata.protocol,
       logdata.httpversion,
-      logdata.secure,
+      // logdata.secure,
       logdata.status,
       logdata.referer,
       logdata.useragent)
